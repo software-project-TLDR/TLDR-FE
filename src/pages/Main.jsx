@@ -1,4 +1,5 @@
 import React, { Children } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -11,7 +12,7 @@ const Container = styled.div`
 const Titlebox = styled.div`
   border: 1px solid black;
   width: 300px;
-  margin-top: 15vh;
+  margin-top: 30vh;
   padding: 20px 0 20px 0;
 `;
 const TitleboxTitle = styled.div`
@@ -49,11 +50,18 @@ const AboutboxContent = styled.div`
   padding-left: 30px;
   padding-right: 30px;
 `;
-const handleOnclickStartButton = () => {
-  console.log("클릭");
-};
-const StartButton = ({ children, ...rest }) => {
-  return <StyledButton {...rest}>{children}</StyledButton>;
+const StartButton = ({ children }) => {
+  const navigate = useNavigate();
+
+  return (
+    <StyledButton
+      onClick={() => {
+        navigate("/Select");
+      }}
+    >
+      {children}
+    </StyledButton>
+  );
 };
 const Main = () => {
   return (
@@ -62,10 +70,11 @@ const Main = () => {
         <TitleboxTitle>Tl;Dr</TitleboxTitle>
         <TitleboxDesc>인공지능 강의요약 프로젝트</TitleboxDesc>
       </Titlebox>
-      <StartButton onClick={handleOnclickStartButton}>시작하기</StartButton>
+      <StartButton>시작하기</StartButton>
       <Aboutbox>
         <AboutboxTitle>About</AboutboxTitle>
         <AboutboxContent>
+          {/* 대충 프로젝트 설명 */}
           본 페이지는 음성 녹음 파일에 텍스트 요약(Summarization), 키워드
           추출(Keyword Extraction) 기술을 적용하여 기존의
           STT(Speech-to-Text)기술을 보완한 지능형 텍스트 구성 및 제공을 위한
