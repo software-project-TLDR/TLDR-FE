@@ -29,7 +29,7 @@ const TitleboxDesc = styled.div`
 const StyledButton = styled.button`
   width: 100px;
   height: 50px;
-  background-color: red;
+  /* background-color: red; */
   border: none;
   border-radius: 25px;
   margin-top: 10vh;
