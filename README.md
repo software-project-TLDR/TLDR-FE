@@ -4,11 +4,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+로컬에서 프로젝트 실행하기
+
 In the project directory, you can run:
+
+### `yarn`
+
+터미널에서 yarn 입력하여 해당 react project dependency 설치
 
 ### `yarn start`
 
-Runs the app in the development mode.\
+yarn start 명령어 입력하여 로컬에서 프로젝트 실행.
+
+<!-- Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
@@ -67,4 +75,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
