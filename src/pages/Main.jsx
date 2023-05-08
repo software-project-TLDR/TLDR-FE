@@ -38,6 +38,7 @@ const StyledButton = styled.button`
 const Aboutbox = styled.div`
   width: 80%;
   border: 1px solid black;
+  margin-bottom: 80px;
 `;
 const AboutboxTitle = styled.div`
   font: 30px black;
