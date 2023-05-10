@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaMicrophoneAlt } from "react-icons/fa";
+import { FaMicrophoneAlt, FaFileUpload } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
@@ -41,22 +41,29 @@ const ContentBox = styled.div`
 `;
 const RecordButton = styled.button`
   display: flex;
-
   justify-content: center;
   align-items: center;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 10rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 7.5rem;
   background-color: transparent;
   border: 0.51rem solid black;
   opacity: 0.8;
+`;
+const UploadButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 10rem;
+  height: 4rem;
+  border-radius: 2rem;
 `;
 
 const Select = () => {
   return (
     <Container>
       <TitleBox>
-        <TitleBoxTitle> 파일 업로드 방식을 선택해주세요. </TitleBoxTitle>
+        <TitleBoxTitle> 음성파일 첨부방식을 선택해주세요. </TitleBoxTitle>
       </TitleBox>
       <ContentContainer>
         <ContentBox>
@@ -66,7 +73,13 @@ const Select = () => {
           <h3>녹음하기</h3>
         </ContentBox>
         or
-        <ContentBox></ContentBox>
+        <ContentBox>
+          <UploadButton>
+            <FaFileUpload size={40} />
+            &nbsp;
+            <h4>파일 첨부하기</h4>
+          </UploadButton>
+        </ContentBox>
       </ContentContainer>
     </Container>
   );
