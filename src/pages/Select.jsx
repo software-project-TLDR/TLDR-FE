@@ -43,13 +43,22 @@ const RecordButtonStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15rem;
-  height: 15rem;
-  border-radius: 7.5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 5rem;
   background-color: transparent;
   border: 0.51rem solid black;
   opacity: 0.8;
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    transition: 0.5s ease-in-out;
+    border: skyblue solid 0.3rem;
+    color: skyblue;
+    cursor: pointer;
+  }
 `;
+
 const UploadButtonStyle = styled.button`
   display: flex;
   align-items: center;
@@ -57,6 +66,15 @@ const UploadButtonStyle = styled.button`
   width: 10rem;
   height: 4rem;
   border-radius: 2rem;
+  transition: 0.5s ease-in-out;
+  border: 0.2rem solid black;
+
+  &:hover {
+    transition: 0.5s ease-in-out;
+    border: skyblue 0.2rem solid;
+    color: skyblue;
+    cursor: pointer;
+  }
 `;
 const RecordButton = ({ children }) => {
   const navigate = useNavigate();
@@ -94,9 +112,9 @@ const Select = () => {
       <ContentContainer>
         <ContentBox>
           <RecordButton>
-            <FaMicrophoneAlt size={150} />
+            <FaMicrophoneAlt size={100} />
           </RecordButton>
-          <h3>녹음하기</h3>
+          <h6>녹음하기</h6>
         </ContentBox>
         or
         <ContentBox>
