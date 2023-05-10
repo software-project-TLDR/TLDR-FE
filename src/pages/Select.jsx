@@ -39,7 +39,7 @@ const ContentBox = styled.div`
   height: 70vh;
   /* background-color: yellow; */
 `;
-const RecordButton = styled.button`
+const RecordButtonStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@ const RecordButton = styled.button`
   border: 0.51rem solid black;
   opacity: 0.8;
 `;
-const UploadButton = styled.button`
+const UploadButtonStyle = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -58,6 +58,32 @@ const UploadButton = styled.button`
   height: 4rem;
   border-radius: 2rem;
 `;
+const RecordButton = ({ children }) => {
+  const navigate = useNavigate();
+
+  return (
+    <RecordButtonStyle
+      onClick={() => {
+        navigate("/Record");
+      }}
+    >
+      {children}
+    </RecordButtonStyle>
+  );
+};
+const UploadButton = ({ children }) => {
+  const navigate = useNavigate();
+
+  return (
+    <UploadButtonStyle
+      onClick={() => {
+        navigate("/Upload");
+      }}
+    >
+      {children}
+    </UploadButtonStyle>
+  );
+};
 
 const Select = () => {
   return (
