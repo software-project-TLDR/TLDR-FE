@@ -1,4 +1,33 @@
 import React, { useState, useCallback } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  /* height: 100vh; */
+`;
+const TitleBox = styled.div`
+  margin-top: 50px;
+  width: 60%;
+  border-bottom: 2px solid grey;
+  padding-bottom: 10px;
+`;
+const TitleBoxTitle = styled.div`
+  font-size: 24px;
+  text-align: center;
+`;
+const ContentContainer = styled.div`
+  font-size: 2rem;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function Record() {
   const [stream, setStream] = useState();
@@ -34,7 +63,7 @@ function Record() {
       makeSound(stream);
 
       analyser.onaudioprocess = function (e) {
-        // 3분(180초) 지나면 자동으로 음성 저장 및 녹음 중지
+        // 3시간(10800초) 지나면 자동으로 음성 저장 및 녹음 중지
         if (e.playbackTime > 10800) {
           stream.getAudioTracks().forEach(function (track) {
             track.stop();
@@ -97,12 +126,17 @@ function Record() {
   };
 
   return (
-    <>
-      <button onClick={onRec ? onRecAudio : offRecAudio}>녹음</button>
-      <button onClick={play} disabled={disabled}>
-        재생
-      </button>
-    </>
+    <Container>
+      <TitleBox>
+        <TitleBoxTitle>음성 녹음</TitleBoxTitle>
+      </TitleBox>
+      <ContentContainer>
+        <button onClick={onRec ? onRecAudio : offRecAudio}>녹음</button>
+        <button onClick={play} disabled={disabled}>
+          재생
+        </button>
+      </ContentContainer>
+    </Container>
   );
 }
 
