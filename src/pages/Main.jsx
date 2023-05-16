@@ -34,6 +34,14 @@ const StyledButton = styled.button`
   border-radius: 25px;
   margin-top: 10vh;
   margin-bottom: 30vh;
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    transition: 0.5s ease-in-out;
+    /* border: skyblue solid 0.3rem; */
+    background-color: skyblue;
+    cursor: pointer;
+  }
 `;
 const Aboutbox = styled.div`
   width: 80%;
