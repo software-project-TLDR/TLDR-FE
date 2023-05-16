@@ -17,8 +17,7 @@ const TitleBoxTitle = styled.div`
   font-size: 24px;
   text-align: center;
 `;
-
-const ContentContainer = styled.div`
+const ContentContainer = styled.form`
   font-size: 2rem;
   width: 100%;
   height: 70vh;
@@ -28,13 +27,17 @@ const ContentContainer = styled.div`
   /* text-align: center; */
   /* background-color: red; */
 `;
+const UploadByButton = styled.input``;
+
 const Upload = () => {
   return (
     <Container>
       <TitleBox>
         <TitleBoxTitle> 강의파일 업로드 </TitleBoxTitle>
       </TitleBox>
-      <ContentContainer></ContentContainer>
+      <ContentContainer>
+        <UploadByButton type="file" accept="audio/*" />
+      </ContentContainer>
     </Container>
   );
 };
