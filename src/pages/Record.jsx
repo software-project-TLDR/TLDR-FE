@@ -50,8 +50,25 @@ function Record() {
     }
   }, [recordedBlob]);
 
+  const handleUpload = useCallback(() => {
+    if (recordedBlob && recordedBlob.blob) {
+      const formData = new FormData();
+      formData.append("audio", recordedBlob.blob, "녹음파일.wav");
+
+      fetch("/서버URL", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => {
+          // 업로드 성공 시 처리
+        })
+        .catch((error) => {
+          // 업로드 실패 시 처리
+        });
+    }
+  }, [recordedBlob]);
+
   const isAudioAvailable = recordedBlob && recordedBlob.blob;
-  // const isRecordingInProgress = isRecording && !isAudioAvailable;
 
   return (
     <Container>
@@ -72,6 +89,9 @@ function Record() {
         <DownloadButton onClick={handleDownload} disabled={!isAudioAvailable}>
           다운로드
         </DownloadButton>
+        <UploadButton onClick={handleUpload} disabled={!isAudioAvailable}>
+          업로드
+        </UploadButton>
       </ContentContainer>
     </Container>
   );
