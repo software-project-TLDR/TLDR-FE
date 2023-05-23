@@ -2,15 +2,54 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { ReactMic } from "react-mic";
 
-const Container = styled.div``;
-const TitleBox = styled.div``;
-const TitleBoxTitle = styled.div``;
-const ContentContainer = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+`;
+const TitleBox = styled.div`
+  margin-top: 50px;
+  width: 60%;
+  border-bottom: 2px solid grey;
+  padding-bottom: 10px;
+`;
+const TitleBoxTitle = styled.div`
+  font-size: 24px;
+  text-align: center;
+`;
+const ContentContainer = styled.div`
+  font-size: 2rem;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const RecordInfoBox = styled.div``;
+
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const RecordButton = styled.button``;
 const PlayButton = styled.button``;
 const DownloadButton = styled.button``;
-const UploadButton = styled.button``;
+
+const Footer = styled.footer`
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+const UploadButton = styled.button`
+  margin-right: 30px;
+`;
 
 function Record() {
   const [isRecording, setIsRecording] = useState(false);
@@ -76,52 +115,34 @@ function Record() {
         <TitleBoxTitle>음성 녹음</TitleBoxTitle>
       </TitleBox>
       <ContentContainer>
-        <ReactMic
-          record={isRecording}
-          onStop={onStop}
-          visualSetting="sinewave"
-          className="visualizer"
-        />
-        <RecordButton onClick={handleRecord}>{recordText}</RecordButton>
-        <PlayButton onClick={handlePlay} disabled={!isAudioAvailable}>
-          재생
-        </PlayButton>
-        <DownloadButton onClick={handleDownload} disabled={!isAudioAvailable}>
-          다운로드
-        </DownloadButton>
-        <UploadButton onClick={handleUpload} disabled={!isAudioAvailable}>
-          업로드
-        </UploadButton>
+        <RecordInfoBox>
+          <ReactMic
+            record={isRecording}
+            onStop={onStop}
+            visualSetting="sinewave"
+            className="visualizer"
+          />
+          <ButtonBox>
+            <RecordButton onClick={handleRecord}>{recordText}</RecordButton>
+            <PlayButton onClick={handlePlay} disabled={!isAudioAvailable}>
+              재생
+            </PlayButton>
+            <DownloadButton
+              onClick={handleDownload}
+              disabled={!isAudioAvailable}
+            >
+              다운로드
+            </DownloadButton>
+          </ButtonBox>
+        </RecordInfoBox>
+        <Footer>
+          <UploadButton onClick={handleUpload} disabled={!isAudioAvailable}>
+            다음
+          </UploadButton>
+        </Footer>
       </ContentContainer>
     </Container>
   );
 }
 
 export default Record;
-
-// const Container = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-//   width: 100%;
-// `;
-// const TitleBox = styled.div`
-//   margin-top: 50px;
-//   width: 60%;
-//   border-bottom: 2px solid grey;
-//   padding-bottom: 10px;
-// `;
-// const TitleBoxTitle = styled.div`
-//   font-size: 24px;
-//   text-align: center;
-// `;
-// const ContentContainer = styled.div`
-//   font-size: 2rem;
-//   width: 100%;
-//   height: 70vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
