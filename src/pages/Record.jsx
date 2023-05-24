@@ -48,7 +48,7 @@ const Footer = styled.footer`
   justify-content: flex-end;
 `;
 const UploadButton = styled.button`
-  margin-right: 30px;
+  margin-right: 20%;
 `;
 
 function Record() {
