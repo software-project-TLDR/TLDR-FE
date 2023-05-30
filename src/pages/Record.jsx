@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { ReactMic } from "react-mic";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -97,7 +98,7 @@ function Record() {
       const formData = new FormData();
       formData.append("audio", audioFile);
 
-      fetch("/서버URL", {
+      fetch("http://127.0.0.1:8000/useWhisper/uploaded/", {
         method: "POST",
         body: formData,
       })
@@ -107,6 +108,19 @@ function Record() {
         .catch((error) => {
           // 업로드 실패 시 처리
         });
+
+      // axios.post('http://127.0.0.1:8000/useWhisper/uploaded/', {"body":formData}, {
+      //   headers: {
+      //   'Content-Type': 'multipart/form-data',
+      //   //'X-CSRFTOKEN': csrfCookie,
+      //   }
+      // })
+      //   .then((response) => {
+      //     // 업로드 성공 시 처리
+      //   })
+      //   .catch((error) => {
+      //     // 업로드 실패 시 처리
+      //   });
     }
   }, [recordedBlob]);
 
