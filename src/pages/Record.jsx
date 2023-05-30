@@ -91,8 +91,11 @@ function Record() {
 
   const handleUpload = useCallback(() => {
     if (recordedBlob && recordedBlob.blob) {
+      const audioFile = new File([recordedBlob.blob], "녹음파일.wav", {
+        type: "audio/wav",
+      });
       const formData = new FormData();
-      formData.append("audio", recordedBlob.blob, "녹음파일.wav");
+      formData.append("audio", audioFile);
 
       fetch("/서버URL", {
         method: "POST",
