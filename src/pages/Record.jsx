@@ -79,19 +79,11 @@ function Record() {
 
   const handleDownload = useCallback(() => {
     if (recordedBlob && recordedBlob.blob) {
-      const date = new Date();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const day = String(date.getDate()).padStart(2, "0");
-      const hours = String(date.getHours()).padStart(2, "0");
-      const minutes = String(date.getMinutes()).padStart(2, "0");
-
-      const fileName = `${month}-${day}-${hours}-${minutes}.wav`;
-
       const { blob } = recordedBlob;
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = fileName;
+      link.download = "녹음파일.wav";
       link.click();
       URL.revokeObjectURL(url);
     }
@@ -99,7 +91,7 @@ function Record() {
 
   const handleUpload = useCallback(() => {
     if (recordedBlob && recordedBlob.blob) {
-      const audioFile = new File([recordedBlob.blob], fileName, {
+      const audioFile = new File([recordedBlob.blob], "녹음파일.wav", {
         type: "audio/wav",
       });
       const formData = new FormData();
