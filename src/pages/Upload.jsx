@@ -39,11 +39,13 @@ const UploadContainer = styled.div`
 
 const UploadedFileList = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 350px;
   border: solid 1px black;
   margin: 50px 0 0 50px;
-  font-size: 18px;
+  font-size: 15px;
 `;
 
 const UploadArea = styled.div`
@@ -111,11 +113,41 @@ const UploadButton = ({ onFileUpload }) => {
   );
 };
 
+const Footer = styled.footer`
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+const NextButton = styled.button`
+  margin-right: 30px;
+`;
+
 const Upload = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
 
   const handleFileUpload = (file) => {
     setUploadedFile(file);
+  };
+
+  const handleNextButtonClick = () => {
+    if (uploadedFile) {
+      const formData = new FormData();
+      formData.append("file", uploadedFile);
+
+      fetch("URL", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   return (
@@ -129,6 +161,9 @@ const Upload = () => {
         </UploadContainer>
         <UploadedFileList>{uploadedFile && uploadedFile.name}</UploadedFileList>
       </ContentContainer>
+      <Footer>
+        <NextButton onClick={handleNextButtonClick}>다음</NextButton>
+      </Footer>
     </Container>
   );
 };
