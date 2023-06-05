@@ -136,7 +136,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append("file", uploadedFile);
 
-      fetch("URL", {
+      fetch("http://127.0.0.1:8000/useWhisper/uploaded/", {
         method: "POST",
         body: formData,
       })
