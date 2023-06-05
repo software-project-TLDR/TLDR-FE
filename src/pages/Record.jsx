@@ -79,16 +79,16 @@ function Record() {
 
   const handleDownload = useCallback(() => {
     if (recordedBlob && recordedBlob.blob) {
+      const { blob } = recordedBlob;
+      const url = URL.createObjectURL(blob);
+
       const date = new Date();
       const month = String(date.getMonth() + 1).padStart(2, "0");
       const day = String(date.getDate()).padStart(2, "0");
       const hours = String(date.getHours()).padStart(2, "0");
       const minutes = String(date.getMinutes()).padStart(2, "0");
-
       const fileName = `${month}-${day}-${hours}-${minutes}.wav`;
 
-      const { blob } = recordedBlob;
-      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
       link.download = fileName;
@@ -99,11 +99,19 @@ function Record() {
 
   const handleUpload = useCallback(() => {
     if (recordedBlob && recordedBlob.blob) {
-      const audioFile = new File([recordedBlob.blob], fileName, {
+      const audioFile = new File([recordedBlob.blob], "녹음파일.wav", {
         type: "audio/wav",
       });
+
+      const date = new Date();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const fileName = `${month}-${day}-${hours}-${minutes}.wav`;
+
       const formData = new FormData();
-      formData.append("audio", audioFile);
+      formData.append("audio", audioFile, fileName);
 
       fetch("http://127.0.0.1:8000/useWhisper/uploaded/", {
         method: "POST",
