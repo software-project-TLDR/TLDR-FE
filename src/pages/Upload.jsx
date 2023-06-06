@@ -134,7 +134,7 @@ const Upload = () => {
   const handleNextButtonClick = () => {
     if (uploadedFile) {
       const formData = new FormData();
-      formData.append("file", uploadedFile);
+      formData.append("audio", uploadedFile);
 
       fetch("http://127.0.0.1:8000/useWhisper/uploaded/", {
         method: "POST",
