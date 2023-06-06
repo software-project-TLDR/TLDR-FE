@@ -99,7 +99,7 @@ const UploadButton = ({ onFileUpload }) => {
         type="file"
         style={{ display: "none" }}
         onChange={handleFileChange}
-        accept=".wav"
+        accept=".wav, .mp3"
       />
       <UploadArea
         uploaded={false}
