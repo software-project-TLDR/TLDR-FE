@@ -71,7 +71,7 @@ const UploadArea = styled.div`
 const UploadButton = ({ onFileUpload }) => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file && file.name.endsWith(".wav")) {
+    if (file && file.name.endsWith(".wav") || file.name.endsWith(".mp3")) {
       onFileUpload(file);
     }
   };
@@ -88,7 +88,7 @@ const UploadButton = ({ onFileUpload }) => {
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
-    if (file && file.name.endsWith(".wav")) {
+    if (file && file.name.endsWith(".wav") || file.name.endsWith(".mp3")) {
       onFileUpload(file);
     }
   };
@@ -109,7 +109,7 @@ const UploadButton = ({ onFileUpload }) => {
       >
         파일을 드래그앤드롭하세요
       </UploadArea>
-      <button onClick={handleButtonClick}>.wav 파일 업로드</button>
+      <button onClick={handleButtonClick}>.mp3 또는 .wav 파일 업로드</button>
     </>
   );
 };
