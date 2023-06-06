@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { ReactMic } from "react-mic";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -47,9 +48,18 @@ const Footer = styled.footer`
   align-items: center;
   justify-content: flex-end;
 `;
-const UploadButton = styled.button`
+const UploadButtonStyle = styled.button`
   margin-right: 20%;
 `;
+
+const UploadButton = ({ children }) => {
+  const navigate = useNavigate();
+  return (
+    <UploadButtonStyle onClick={() => navigate("/Result")}>
+      다음
+    </UploadButtonStyle>
+  );
+};
 
 function Record() {
   const [isRecording, setIsRecording] = useState(false);
@@ -155,9 +165,10 @@ function Record() {
           </ButtonBox>
         </RecordInfoBox>
         <Footer>
-          <UploadButton onClick={handleUpload} disabled={!isAudioAvailable}>
-            다음
-          </UploadButton>
+          <UploadButton
+            onClick={handleUpload}
+            disabled={!isAudioAvailable}
+          ></UploadButton>
         </Footer>
       </ContentContainer>
     </Container>
