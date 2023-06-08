@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -126,8 +125,6 @@ const NextButton = styled.button`
 `;
 
 const Upload = () => {
-  const navigate = useNavigate();
-
   const [uploadedFile, setUploadedFile] = useState(null);
   const [text, setText] = useState("강의파일 업로드1");
 
@@ -147,7 +144,6 @@ const Upload = () => {
         .then((response) => {
           //response.json()
           console.log(response.text());
-          navigate("/Result");
           //setText(response.text());
         })
         // .then((data) => {
@@ -155,8 +151,9 @@ const Upload = () => {
         // })
         .catch((error) => {
           console.error(error);
-        });
-      console.log("응답 왔나요?"); // 응답이 늦으면 "응답 왔나요?" 가 먼저 실행됩니다
+        })
+        console.log("응답 왔나요?") // 응답이 늦으면 "응답 왔나요?" 가 먼저 실행됩니다
+        ;
     }
   };
 
