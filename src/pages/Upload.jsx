@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -121,22 +120,9 @@ const Footer = styled.footer`
   align-items: center;
   justify-content: flex-end;
 `;
-const NextButtonStyle = styled.button`
+const NextButton = styled.button`
   margin-right: 30px;
 `;
-const NextButton = ({ children }) => {
-  const navigate = useNavigate();
-
-  return (
-    <NextButtonStyle
-      onClick={() => {
-        navigate("/Result");
-      }}
-    >
-      다음
-    </NextButtonStyle>
-  );
-};
 
 const Upload = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -176,7 +162,7 @@ const Upload = () => {
         <UploadedFileList>{uploadedFile && uploadedFile.name}</UploadedFileList>
       </ContentContainer>
       <Footer>
-        <NextButton onClick={handleNextButtonClick}></NextButton>
+        <NextButton onClick={handleNextButtonClick}>다음</NextButton>
       </Footer>
     </Container>
   );
