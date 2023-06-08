@@ -126,6 +126,7 @@ const NextButton = styled.button`
 
 const Upload = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [text, setText] = useState("강의파일 업로드1");
 
   const handleFileUpload = (file) => {
     setUploadedFile(file);
@@ -140,20 +141,26 @@ const Upload = () => {
         method: "POST",
         body: formData,
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
+        .then((response) => {
+          //response.json()
+          console.log(response.text());
+          //setText(response.text());
         })
+        // .then((data) => {
+        //   console.log(data);
+        // })
         .catch((error) => {
           console.error(error);
-        });
+        })
+        console.log("응답 왔나요?") // 응답이 늦으면 "응답 왔나요?" 가 먼저 실행됩니다
+        ;
     }
   };
 
   return (
     <Container>
       <TitleBox>
-        <TitleBoxTitle>강의파일 업로드</TitleBoxTitle>
+        <TitleBoxTitle>{text}</TitleBoxTitle>
       </TitleBox>
       <ContentContainer>
         <UploadContainer>
