@@ -98,17 +98,17 @@ function Record() {
   }, [recordedBlob]);
 
   const handleUpload = useCallback(() => {
+    const date = new Date();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const fileName = `${month}-${day}-${hours}-${minutes}.wav`;
+
     if (recordedBlob && recordedBlob.blob) {
       const audioFile = new File([recordedBlob.blob], fileName, {
         type: "audio/wav",
       });
-
-      const date = new Date();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const day = String(date.getDate()).padStart(2, "0");
-      const hours = String(date.getHours()).padStart(2, "0");
-      const minutes = String(date.getMinutes()).padStart(2, "0");
-      const fileName = `${month}-${day}-${hours}-${minutes}.wav`;
 
       const formData = new FormData();
       formData.append("audio", audioFile, fileName);
