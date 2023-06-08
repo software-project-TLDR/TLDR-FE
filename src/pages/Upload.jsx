@@ -162,7 +162,9 @@ const Upload = () => {
         <UploadedFileList>{uploadedFile && uploadedFile.name}</UploadedFileList>
       </ContentContainer>
       <Footer>
-        <NextButton onClick={handleNextButtonClick}>다음</NextButton>
+        <NextButton onClick={handleNextButtonClick} disabled={!uploadedFile}>
+          다음
+        </NextButton>
       </Footer>
     </Container>
   );
