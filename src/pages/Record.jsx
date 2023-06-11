@@ -120,11 +120,14 @@ function Record() {
         body: formData,
       })
         .then((response) => {
-          // 업로드 성공 시 처리
-          navigate("/result");
+          return response.json();
         })
         .catch((error) => {
-          // 업로드 실패 시 처리
+          console.error(error);
+        })
+        .then((data) => {
+          console.log("내용:", data);
+          navigate("/result", { state: data });
         });
     }
   }, [recordedBlob, navigate]);

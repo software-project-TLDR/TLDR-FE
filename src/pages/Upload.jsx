@@ -128,7 +128,6 @@ const NextButton = styled.button`
 const Upload = () => {
   const navigate = useNavigate();
   const [uploadedFile, setUploadedFile] = useState(null);
-  const [text, setText] = useState("강의파일 업로드1");
 
   const handleFileUpload = (file) => {
     setUploadedFile(file);
@@ -161,7 +160,7 @@ const Upload = () => {
   return (
     <Container>
       <TitleBox>
-        <TitleBoxTitle>{text}</TitleBoxTitle>
+        <TitleBoxTitle>강의파일 업로드</TitleBoxTitle>
       </TitleBox>
       <ContentContainer>
         <UploadContainer>
