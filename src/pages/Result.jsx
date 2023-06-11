@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -34,16 +35,19 @@ const ContentBoxContent = styled.h3`
 `;
 
 const Result = () => {
+  const location = useLocation();
+  const txtData = location.state;
+
   return (
     <Container>
       <TitleBox>
-        <TitleBoxTitle>음성 녹음</TitleBoxTitle>
+        <TitleBoxTitle>결과 페이지</TitleBoxTitle>
       </TitleBox>
       <ContentBox>
         <ContentBoxTitle>요약</ContentBoxTitle>
-        <ContentBoxContent>요약된 내용</ContentBoxContent>
+        <ContentBoxContent>{txtData.summarization}</ContentBoxContent>
         <ContentBoxTitle>원문</ContentBoxTitle>
-        <ContentBoxContent>원문 내용</ContentBoxContent>
+        <ContentBoxContent>{txtData.transcription}</ContentBoxContent>
       </ContentBox>
     </Container>
   );

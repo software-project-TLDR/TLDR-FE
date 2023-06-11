@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { ReactMic } from "react-mic";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -52,6 +53,7 @@ const UploadButton = styled.button`
 `;
 
 function Record() {
+  const navigate = useNavigate();
   const [isRecording, setIsRecording] = useState(false);
   const [recordText, setRecordText] = useState("녹음 시작하기");
   const [recordedBlob, setRecordedBlob] = useState(null);
@@ -119,12 +121,13 @@ function Record() {
       })
         .then((response) => {
           // 업로드 성공 시 처리
+          navigate("/result");
         })
         .catch((error) => {
           // 업로드 실패 시 처리
         });
     }
-  }, [recordedBlob]);
+  }, [recordedBlob, navigate]);
 
   const isAudioAvailable = recordedBlob && recordedBlob.blob;
 
