@@ -44,8 +44,10 @@ const Result = () => {
         <TitleBoxTitle>결과 페이지</TitleBoxTitle>
       </TitleBox>
       <ContentBox>
-        <ContentBoxTitle>요약</ContentBoxTitle>
+        <ContentBoxTitle>요약1</ContentBoxTitle>
         <ContentBoxContent>{txtData.summarization}</ContentBoxContent>
+        <ContentBoxTitle>요약2</ContentBoxTitle>
+        <ContentBoxContent>{txtData.our_summarization}</ContentBoxContent>
         <ContentBoxTitle>원문</ContentBoxTitle>
         <ContentBoxContent>{txtData.transcription}</ContentBoxContent>
       </ContentBox>
